@@ -1,0 +1,145 @@
+{
+    "version": 1,
+    "author": "Moen Inc. Development Team",
+    "editor": "wokwi",
+    "parts": [
+        {
+            "type": "wokwi-esp32-devkit-v1",
+            "id": "esp",
+            "top": 0,
+            "left": 0,
+            "attrs": {
+                "firmware": "sketch.ino"
+            }
+        },
+        {
+            "type": "wokwi-hc-sr04",
+            "id": "ultrasonic",
+            "top": 0,
+            "left": 400,
+            "attrs": {
+                "distance": "50"
+            }
+        },
+        {
+            "type": "wokwi-relay-module",
+            "id": "relay",
+            "top": 200,
+            "left": 400,
+            "attrs": {}
+        },
+        {
+            "type": "wokwi-led",
+            "id": "led1",
+            "top": 100,
+            "left": 600,
+            "attrs": {
+                "color": "blue"
+            }
+        },
+        {
+            "type": "wokwi-resistor",
+            "id": "r1",
+            "top": 100,
+            "left": 500,
+            "attrs": {
+                "value": "220"
+            }
+        }
+    ],
+    "connections": [
+        [
+            "esp:TX0",
+            "$serialMonitor:RX",
+            "",
+            []
+        ],
+        [
+            "esp:RX0",
+            "$serialMonitor:TX",
+            "",
+            []
+        ],
+        [
+            "esp:D5",
+            "ultrasonic:TRIG",
+            "green",
+            [
+                "h0"
+            ]
+        ],
+        [
+            "esp:D18",
+            "ultrasonic:ECHO",
+            "yellow",
+            [
+                "h0"
+            ]
+        ],
+        [
+            "esp:D19",
+            "relay:IN",
+            "orange",
+            [
+                "h0"
+            ]
+        ],
+        [
+            "esp:D2",
+            "r1:1",
+            "blue",
+            [
+                "h0"
+            ]
+        ],
+        [
+            "r1:2",
+            "led1:A",
+            "blue",
+            [
+                "h0"
+            ]
+        ],
+        [
+            "led1:C",
+            "esp:GND.1",
+            "black",
+            [
+                "h0"
+            ]
+        ],
+        [
+            "ultrasonic:VCC",
+            "esp:3V3",
+            "red",
+            [
+                "h0"
+            ]
+        ],
+        [
+            "ultrasonic:GND",
+            "esp:GND.2",
+            "black",
+            [
+                "h0"
+            ]
+        ],
+        [
+            "relay:VCC",
+            "esp:3V3",
+            "red",
+            [
+                "h0"
+            ]
+        ],
+        [
+            "relay:GND",
+            "esp:GND.3",
+            "black",
+            [
+                "h0"
+            ]
+        ]
+    ],
+    "dependencies": {}
+}

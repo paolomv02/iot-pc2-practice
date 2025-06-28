@@ -1,0 +1,4 @@
+# Wokwi Libraries Configuration
+# This file lists the Arduino libraries used in the project
+
+WiFi
